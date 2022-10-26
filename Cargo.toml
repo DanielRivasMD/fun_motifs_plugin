@@ -9,4 +9,5 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.31"
 colored = "2.0.0"
+derive-new = "0.5.9"
 thiserror = "1.0.37"
