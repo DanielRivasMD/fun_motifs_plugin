@@ -34,12 +34,11 @@ anyhow = "1.0.31"
 bytelines = "2.4.0"
 clap = "3.1.0"
 colored = "2.0.0"
-cpython = "0.7.1"
 derive-new = "0.5.9"
 flate2 = "1.0.24"
 thiserror = "1.0.37"
 
 
 [dependencies.cpython]
-version = "0.1"
+version = "0.7.1"
 features = ["extension-module"]
