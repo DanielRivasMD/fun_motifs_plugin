@@ -12,10 +12,16 @@ name = "line_counter"
 path = "src/bin/line_counter.rs"
 
 
+[[bin]]
+name = "python_plugin"
+path = "src/bin/python_plugin.rs"
+
+
 [lib]
 name = "fun_motifs_plugin"
 path = "src/fun_motifs_plugin.rs"
 # crate-type = ["dylib"]
+
 
 [dependencies]
 anyhow = "1.0.31"
