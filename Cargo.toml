@@ -6,6 +6,12 @@ authors = [
 ]
 edition = "2021"
 
+
+[lib]
+name = "fun_motifs_plugin"
+path = "src/fun_motifs_plugin.rs"
+# crate-type = ["dylib"]
+
 [dependencies]
 anyhow = "1.0.31"
 bytelines = "2.4.0"
