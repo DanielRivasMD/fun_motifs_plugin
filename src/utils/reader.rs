@@ -43,6 +43,23 @@ fn byte_file_reader(
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+// line counter
+pub fn line_counter(input_csv_path: &str) -> anyResult<i32> {
+  // declare counter
+  let mut ct = 0;
+
+  // collect lines
+  let mut lines = byte_file_reader(input_csv_path)?;
+  while let Some(line) = lines.next() {
+    // line counter
+    ct += 1;
+  }
+
+  Ok(ct)
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
 // TODO: write reader
 pub fn csv_reader_input(input_csv_path: &str) -> anyResult<()> {
   Ok(())
