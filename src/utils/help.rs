@@ -32,7 +32,7 @@ pub fn cli_fun_motifs_plugin() -> Command<'static> {
         .long("output")
         .short('o')
         .takes_value(true)
-        .required(true)
+        .required(false)
         .help("Output files"),
     )
 }

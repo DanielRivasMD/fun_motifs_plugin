@@ -22,8 +22,9 @@ pub fn collect_str(matches: ArgMatches) -> anyResult<ParamsCLI> {
     // input
     input: matches.value_of("input").unwrap().to_string(),
 
-    // output
-    output: matches.value_of("output").unwrap().to_string(),
+    // // output
+    // output: matches.value_of("output").unwrap().to_string(),
+    output: String::new(),
 
     // logging
     log: LogFlag::from_str(
