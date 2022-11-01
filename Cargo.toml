@@ -7,6 +7,11 @@ authors = [
 edition = "2021"
 
 
+[[bin]]
+name = "line_counter"
+path = "src/bin/line_counter.rs"
+
+
 [lib]
 name = "fun_motifs_plugin"
 path = "src/fun_motifs_plugin.rs"
