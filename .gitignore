@@ -3,3 +3,6 @@
 
 # lock
 Cargo.lock
+
+# data
+/data
