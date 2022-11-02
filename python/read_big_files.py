@@ -1,5 +1,11 @@
 from datetime import datetime
+import argparse
 
+def parse_args():
+    parser = argparse.ArgumentParser(description='stop time for counting lines')
+    parser.add_argument('--file', default="")
+    args, unknown = parser.parse_known_args()
+    return args
 
 def count_lines(infile):
     with open(infile, 'r') as f:
@@ -10,10 +16,10 @@ def count_lines(infile):
 
 
 if __name__ == '__main__':
+    args = parse_args()
     start_time = datetime.now()
     print(start_time)
-    file = 'D:\CRC-SW.Ensemble.1063_DNBSEQ.20210706.lite.maf'
-    x = count_lines(file)
-    print(x)
+    x = count_lines(args.file)
+    print('Lines:', x)
     end_time = datetime.now()
     print(f'Duration: {end_time - start_time}')
