@@ -25,9 +25,9 @@ fn count_doubles(
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 py_module_initializer!(
-  libmyrustlib,
-  initlibmyrustlib,
-  PyInit_myrustlib,
+  libfun_motifs_plugin,
+  initlibfun_motifs_plugin,
+  PyInit_fun_motifs_plugin,
   |py, m| {
     m.add(py, "__doc__", "This module is implemented in Rust")?;
     m.add(py, "count_doubles", py_fn!(py, count_doubles(val: &str)))?;

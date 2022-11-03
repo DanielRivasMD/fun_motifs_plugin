@@ -17,16 +17,16 @@ name = "python_plugin"
 path = "src/bin/python_plugin.rs"
 
 
-[profile.release]
-strip = true          # strip symbols from binary
-opt-level = 3         # maximum optimization speed
-lto = true            # enable link optimization
+#[profile.release]
+#strip = true          # strip symbols from binary
+#opt-level = 3         # maximum optimization speed
+#lto = true            # enable link optimization
 
 
 [lib]
 name = "fun_motifs_plugin"
 path = "src/fun_motifs_plugin.rs"
-# crate-type = ["dylib"]
+crate-type = ["rlib", "dylib"]
 
 
 [dependencies]
