@@ -89,3 +89,17 @@ Hermes-source:
   rsync -azvhP "${projLocal}/.just.sh" "${ulamID}:${projRemote}/"
   rsync -azvhP "${projLocal}/.justfile" "${ulamID}:${projRemote}/"
 
+####################################################################################################
+
+# deliver sample data to remote cluster
+Hermes-data:
+  #!/bin/bash
+  set -euo pipefail
+
+  # declarations
+  source ".just.sh"
+
+  echo 'Deploying source to Ulam...'
+  rsync -azvhP "${projLocal}/data/" "${ulamID}:${projRemote}/data"
+
+####################################################################################################
