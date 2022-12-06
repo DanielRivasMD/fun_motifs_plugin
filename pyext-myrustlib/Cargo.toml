@@ -1,0 +1,12 @@
+[package]
+name = "pyext-myrustlib"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name="myrustlib"
+crate-type=["dylib"]
+
+[dependencies.cpython]
+version = "0.1"
+features = ["extension-module"]

@@ -1,0 +1,7 @@
+cargo:rustc-cfg=Py_3_4
+cargo:rustc-cfg=Py_3_5
+cargo:rustc-cfg=Py_3_6
+cargo:rustc-cfg=Py_3_7
+cargo:rustc-cfg=Py_3_8
+cargo:rustc-cfg=py_sys_config="WITH_THREAD"
+cargo:python_flags=FLAG_WITH_THREAD=1
