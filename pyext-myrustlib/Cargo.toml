@@ -8,5 +8,5 @@ name="myrustlib"
 crate-type=["dylib"]
 
 [dependencies.cpython]
-version = "0.1"
+version = "0.7.1"
 features = ["extension-module"]
