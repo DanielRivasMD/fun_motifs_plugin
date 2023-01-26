@@ -1,13 +1,5 @@
 [package]
-name = "pyext-myrustlib"
+name = "fun_motifs_plugin"
 version = "0.1.0"
 edition = "2021"
-rust-version = "1.61"
 
-[lib]
-name="myrustlib"
-crate-type=["dylib"]
-
-[dependencies.cpython]
-version = "0.7.1"
-features = ["extension-module"]
