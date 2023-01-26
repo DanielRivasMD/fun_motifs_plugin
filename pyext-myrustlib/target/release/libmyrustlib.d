@@ -1,1 +1,0 @@
-/mnt/c/Users/Mark/Desktop/Uni/Master/Masterarbeit/funMotifs_Rust/fun_motifs_plugin/pyext-myrustlib/target/release/libmyrustlib.so: /mnt/c/Users/Mark/Desktop/Uni/Master/Masterarbeit/funMotifs_Rust/fun_motifs_plugin/pyext-myrustlib/src/lib.rs
