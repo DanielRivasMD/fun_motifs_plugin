@@ -1,5 +1,20 @@
 [package]
 name = "fun_motifs_plugin"
 version = "0.1.0"
+authors = [
+  "Daniel Rivas <danielrivasmd@gmail.com>",
+]
 edition = "2021"
 
+
+[[bin]]
+name = "funmotifs"
+path = "src/bin/main.rs"
+
+
+[lib]
+name = "fun_motifs_plugin"
+path = "src/fun_motifs_plugin.rs"
+
+
+[dependencies]
