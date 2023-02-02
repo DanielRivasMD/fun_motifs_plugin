@@ -87,6 +87,25 @@ _default:
 
 ####################################################################################################
 
+# # deliver repository to remote cluster
+# Hermes-source:
+#   #!/bin/bash
+#   set -euo pipefail
+
+#   # declarations
+#   source ".just.sh"
+
+#   echo 'Deploying source to Ulam...'
+#   rsync -azvhP "${projLocal}/src/" "${ulamID}:${projRemote}/src"
+#   rsync -azvhP "${projLocal}/python/" "${ulamID}:${projRemote}/python"
+#   rsync -azvhP "${projLocal}/.just.sh" "${ulamID}:${projRemote}/"
+#   rsync -azvhP "${projLocal}/.justfile" "${ulamID}:${projRemote}/"
+#   rsync -azvhP "${projLocal}/.gitignore" "${ulamID}:${projRemote}/"
+#   rsync -azvhP "${projLocal}/Cargo.toml" "${ulamID}:${projRemote}/"
+#   rsync -azvhP "${projLocal}/rustfmt.toml" "${ulamID}:${projRemote}/"
+
+####################################################################################################
+
 # deliver repository to remote cluster
 Hermes-source:
   #!/bin/bash
@@ -95,14 +114,6 @@ Hermes-source:
   # declarations
   source ".just.sh"
 
-  echo 'Deploying source to Ulam...'
-  rsync -azvhP "${projLocal}/src/" "${ulamID}:${projRemote}/src"
-  rsync -azvhP "${projLocal}/python/" "${ulamID}:${projRemote}/python"
-  rsync -azvhP "${projLocal}/.just.sh" "${ulamID}:${projRemote}/"
-  rsync -azvhP "${projLocal}/.justfile" "${ulamID}:${projRemote}/"
-  rsync -azvhP "${projLocal}/.gitignore" "${ulamID}:${projRemote}/"
-  rsync -azvhP "${projLocal}/Cargo.toml" "${ulamID}:${projRemote}/"
-  rsync -azvhP "${projLocal}/rustfmt.toml" "${ulamID}:${projRemote}/"
   echo 'Deploying source to Uppmax...'
   rsync -azvhP --delete "${projLocal}/src" "${uppmaxID}:${projRemote}/"
   rsync -azvhP --delete "${projLocal}/.just.sh" "${uppmaxID}:${projRemote}/"
