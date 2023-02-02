@@ -18,4 +18,12 @@ path = "src/fun_motifs_plugin.rs"
 
 
 [dependencies]
+anyhow = "1.0.31"
+bytelines = "2.2"
+clap = { version = "4.1.4", features = ["derive"] }
+colored = "2"
+config = "0.13.3"
 derive-new = "0.5.0"
+flate2 = "1.0.22"
+itertools = "0.10.3"
+thiserror = "1.0.20"
