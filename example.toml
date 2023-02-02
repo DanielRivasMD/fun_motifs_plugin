@@ -1,0 +1,6 @@
+
+directory = "/home/drivas/private/Phoenix/"
+output = "outDir/"
+threshold_method = "Poisson"
+false_discovery_rate = 0.001
+expected_tlen = 300
