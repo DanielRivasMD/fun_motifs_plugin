@@ -18,3 +18,4 @@ path = "src/fun_motifs_plugin.rs"
 
 
 [dependencies]
+derive-new = "0.5.0"
