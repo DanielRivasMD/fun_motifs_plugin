@@ -91,6 +91,12 @@ Hermes-source:
   rsync -azvhP "${projLocal}/.gitignore" "${ulamID}:${projRemote}/"
   rsync -azvhP "${projLocal}/Cargo.toml" "${ulamID}:${projRemote}/"
   rsync -azvhP "${projLocal}/rustfmt.toml" "${ulamID}:${projRemote}/"
+  echo 'Deploying source to Uppmax...'
+  rsync -azvhP --delete "${projLocal}/src" "${uppmaxID}:${projRemote}/"
+  rsync -azvhP --delete "${projLocal}/.just.sh" "${uppmaxID}:${projRemote}/"
+  rsync -azvhP --delete "${projLocal}/.justfile" "${uppmaxID}:${projRemote}/"
+  rsync -azvhP --delete "${projLocal}/.gitignore" "${uppmaxID}:${projRemote}/"
+  rsync -azvhP --delete "${projLocal}/Cargo.toml" "${uppmaxID}:${projRemote}/"
 
 ####################################################################################################
 
