@@ -2,6 +2,12 @@
 
 // standard libraries
 use clap::Parser;
+use std::collections::HashMap;
+use config::{
+  Config,
+  File,
+  FileFormat,
+};
 use std::path::PathBuf;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,5 +38,30 @@ pub struct Cli {
 }
 
 // TODO: Activate iteration only when debug is active
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// builder
+pub fn config_builder(params: &Cli) -> HashMap<String, String> {
+
+  let builder = Config::builder()
+  .add_source(File::new(&params.config, FileFormat::Toml));
+
+  let mut config_hm = HashMap::new();
+
+  match builder.build() {
+  Ok(config) => {
+      // use your config
+      config_hm = config.try_deserialize::<HashMap<String, String>>().unwrap();
+      println!("{:?}", config_hm);
+  },
+  Err(_e) => {
+      // something went wrong
+  }
+  }
+
+  config_hm
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
