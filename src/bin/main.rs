@@ -18,7 +18,7 @@ use clap::Parser;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // crate utilities
-use crate::utils::help::Cli;
+use crate::utils::help::{Cli, config_builder};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -34,21 +34,7 @@ fn main() -> anyResult<()> {
 
   println!("{:?}", params);
 
-  let builder = Config::builder()
-    .set_default("default", "1")?
-    .add_source(File::new(&params.config, FileFormat::Toml))
-    .set_override("override", "1")?;
-
-match builder.build() {
-  Ok(config) => {
-      // use your config
-      let config_hm = config.try_deserialize::<HashMap<String, String>>().unwrap();
-      println!("{:?}", config_hm);
-  },
-  Err(_e) => {
-      // something went wrong
-  }
-}
+  let config_hm = config_builder(&params);
 
   // verify & create paths
 
