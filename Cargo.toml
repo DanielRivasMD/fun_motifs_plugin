@@ -3,6 +3,7 @@ name = "fun_motifs_plugin"
 version = "0.1.0"
 authors = [
   "Daniel Rivas <danielrivasmd@gmail.com>",
+  "Mark Melzer <mark@fam-melzer.net>"
 ]
 edition = "2021"
 
