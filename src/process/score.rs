@@ -17,7 +17,7 @@ use std::path::PathBuf;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-pub fn score(overlap: String, expr_tissue: String) -> anyResult<()> {
+pub fn score(motifs_overlapping_tracks_file: &str, normal_expression_per_tissue_origin_per_TF: &str, matching_tissue_to_cell: &str, motifTFName_TFNames_matches_dict: &str, cells_assays_dict: &str, cell_tfs: &str, tf_cells: &str, assay_cells_datatypes: &str, index_track_names: i32, index_motif_name: i32) -> anyResult<()> {
 
   // declare file
 
