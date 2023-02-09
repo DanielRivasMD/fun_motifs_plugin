@@ -56,7 +56,15 @@ pub fn cache_controller(
   }
 
   // get list of all files of combined tracks
-  let chromatin_tracks_files = read_dir(all_chromatin_makrs_all_cells_input_dir)?;
+  let chromatin_tracks_files = read_dir(all_chromatin_makrs_all_cells_input_dir)?
+    .filter_map(|perhaps_dir_entry| {
+      let dir_entry = perhaps_dir_entry.ok()?;
+      let path_buf = dir_entry.path();
+      let file_name = path_buf.file_name()?;
+      let string = file_name.to_str()?;
+      Some(string.to_string())
+    })
+    .collect::<Vec<String>>();
 
   // create output directory if not existing
   if !Path::new(&motif_overlapping_tracks_output_dir).exists() {
