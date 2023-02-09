@@ -25,7 +25,7 @@ pub fn cache_controller(
 ) -> anyResult<(Vec<String>, Vec<String>)> {
 
   // declare motif files
-  let mut motif_files = vec![];
+  let motif_files: Vec<String>;
 
   // check if input motif_sites_dir is directory & get files
   if Path::new(&motif_sites_dir).exists() {
