@@ -22,7 +22,7 @@ pub fn cache_controller(
   motif_sites_dir: &str,
   all_chromatin_makrs_all_cells_input_dir: &str,
   motif_overlapping_tracks_output_dir: &str,
-) -> anyResult<()> {
+) -> anyResult<(Vec<String>, Vec<String>)> {
 
   // declare motif files
   let mut motif_files = vec![];
@@ -71,7 +71,7 @@ pub fn cache_controller(
     create_dir_all(&motif_overlapping_tracks_output_dir);
   }
 
-  Ok(())
+  Ok((motif_files_full_path, chromatin_tracks_files))
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
