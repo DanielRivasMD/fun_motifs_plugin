@@ -31,7 +31,7 @@ use crate::utils::error::FunMotifs;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-fn byte_file_reader(
+pub fn byte_file_reader(
   input_file: &str
 ) -> anyResult<ByteLines<BufReader<Box<dyn Read>>>> {
   let reader: BufReader<Box<dyn Read>> = BufReader::new(
