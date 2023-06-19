@@ -8,17 +8,23 @@ use fun_motifs_plugin::*;
 // standard libraries
 use anyhow::Result as anyResult;
 use std::collections::HashMap;
+use std::fmt::format;
 use config::{
   Config,
   File,
   FileFormat,
 };
 use clap::Parser;
+use std::path::Path;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // crate utilities
+use crate::process::cache::cache_controller;
+use crate::process::overlay::overlay;
+use crate::process::score::score;
 use crate::utils::help::{Cli, config_builder};
+use crate::utils::writer::{csv_writer_create, csv_writer_header};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -29,6 +35,8 @@ use crate::utils::error::ConfigError;
 
 fn main() -> anyResult<()> {
 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+
   // collect command line arguments
   let params = Cli::parse();
 
@@ -36,11 +44,67 @@ fn main() -> anyResult<()> {
 
   let config_hm = config_builder(&params);
 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  // declare dummy variables
+  let motif_sites_dir = String::new();
+  let all_chromatin_makrs_all_cells_combined_dir_path = String::new();
+  let motifs_overlapping_tracks_output_dir = String::new();
+
+  let normal_expression_per_tissue_origin_per_TF = String::new();
+  let matching_tissue_to_cell = String::new();
+  let assay_cells_datatypes = String::new();
+  let motifTFName_TFNames_matches_dict = String::new();
+  let cells_assays_dict = String::new();
+  let cell_tfs = String::new();
+  let tf_cells = String::new();
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+
   // verify & create paths
+  let (motif_files_full_path, chromatin_tracks_files) = cache_controller(&motif_sites_dir, &all_chromatin_makrs_all_cells_combined_dir_path, &motifs_overlapping_tracks_output_dir)?;
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // overlay_resources_score_motifs
+  // compute overlay resource score motif to find overlapping structures
+  let mut motifs_overlapping_tracks_files = vec![];
+  for i in motif_files_full_path {
+    if Path::new(&i).exists() {
+      let motifs_overlapping_tracks_file = overlay(&i, &motifs_overlapping_tracks_output_dir, &all_chromatin_makrs_all_cells_combined_dir_path, chromatin_tracks_files.clone())?;
+      motifs_overlapping_tracks_files.push(motifs_overlapping_tracks_file);
+    } else {
+      println!("Motif file {} cannot be found and will be ignored", &i);
+    }
+  }
+
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
 
   // score_motifs_per_cell
+  let mut scored_motifs_overlapping_tracks_files = vec![];
+  for motifs_overlapping_tracks_file in motifs_overlapping_tracks_files {
+    // TODO: format file name
+    let scored_motifs_chromatin_tracks_output_file = format!("{}_scored.bed10", motifs_overlapping_tracks_file);
+
+    // create or overwrite scored motif (chromatin-wise) files
+    if !Path::new(&scored_motifs_chromatin_tracks_output_file).exists() {
+
+      let index_track_names = 6;
+      let index_motif_name = 3;
+
+      // prepare to write
+      let mut output_file = csv_writer_create(&scored_motifs_chromatin_tracks_output_file)?;
+      csv_writer_header(&mut output_file);
+
+      score(&motifs_overlapping_tracks_file, &normal_expression_per_tissue_origin_per_TF, &matching_tissue_to_cell, &motifTFName_TFNames_matches_dict, &cells_assays_dict, &cell_tfs, &tf_cells, &assay_cells_datatypes, index_track_names, index_motif_name)?;
+
+      // TODO: define overlapping tracks
+      let scored_motifs_overlapping_tracks_file = String::new();
+      scored_motifs_overlapping_tracks_files.push(scored_motifs_overlapping_tracks_file);
+    }
+
+  }
+
 
   //
 
