@@ -24,6 +24,8 @@ pub fn cache_controller(
   motif_overlapping_tracks_output_dir: &str,
 ) -> anyResult<(Vec<String>, Vec<String>)> {
 
+  // TODO: read path & list files => motif_sites_dir
+
   // declare motif files
   let motif_files: Vec<String>;
 
@@ -48,6 +50,8 @@ pub fn cache_controller(
   } else {
     exit(1);
   }
+
+  // TODO: read path & list files => all_chromatin_makrs_all_cells_combined_dir_path
 
   // get list of paths to all motif files
   let mut motif_files_full_path = vec![];
